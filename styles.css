@@ -1,0 +1,239 @@
+/* Base styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #314247; /* Deep Color text */
+    background: #F6F6F6; /* Light background */
+    background-size: cover;
+    transition: background-color 0.6s, color 0.3s;
+}
+
+/* Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+.header {
+    background: #314247;
+    color: #314247; /* Deep Color text */
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+}
+
+/* Header Title */
+.header h1 {
+    margin: 0;
+    font-family: 'Alegreya', serif;
+    font-size: 28px;
+    color: #F7F7F7;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #D55F8F; /* Primary Color */
+    color: #FFFFFF; /* White text */
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #B48A8E; /* Darker primary color on hover */
+    transform: translateY(-2px);
+}
+
+/* Dashboard */
+.dashboard {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding: 20px;
+    gap: 20px; /* Space between sidebar and content */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background: rgba(247, 247, 247, 0.8); /* Glassmorphism sidebar */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    border: 2px solid #647973;
+    padding: 20px;
+}
+
+/* Sidebar Links */
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    color: #314247; /* Deep Color links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    color: #647973; /* Accent Color on hover */
+}
+
+/* Content Area */
+.content-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(247, 247, 247, 0.8); /* Glassmorphism content area */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    border: 2px solid #647973;
+}
+
+/* Lease Card */
+.lease-card {
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    border: 2px solid #647973; /* Custom border color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+}
+
+.lease-text-container {
+    margin-top: 15px;
+    
+}
+
+#saveLandlordInfo {
+  margin-top: 10px;
+}
+
+#extractedText {
+    max-height: 400px; /* Set a maximum height for the container */
+    overflow-y: hidden; /* Disable vertical scrolling */
+    overflow-x: auto;   /* Enable horizontal scrolling */
+    white-space: pre;   /* Preserve whitespace without wrapping lines */
+    word-wrap: normal;  /* Prevent breaking words */
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    padding: 10px;      /* Optional: Add some padding */
+}
+
+
+/* Expand/Collapse Button */
+#toggleLease, #toggleExtractedText {
+    margin-bottom: 10px;
+}
+
+
+
+/* Issue Card */
+.issue-card {
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox for layout */
+    border: 2px solid #647973;
+}
+
+.issue-status {
+    width: 5px; /* Fixed width for status marker */
+    transition: border-left 0.3s; /* Smooth transition */
+}
+
+.issue-content {
+    flex: 1; /* Take the remaining space */
+    padding-left: 10px; /* Space between marker and content */
+}
+
+/* Card Title */
+.issue-card h4 {
+    margin: 0 0 10px 0;
+    font-family: 'Alegreya', serif;
+    color: #314247; /* Deep Color title */
+}
+
+/* Utility Classes */
+.message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.message.success {
+    background-color: #E0F7E4; /* Light green */
+    color: #155724; /* Dark green text */
+}
+
+.message.error {
+    background-color: #FEE2E2; /* Light red */
+    color: #721c24; /* Dark red text */
+}
+
+/* Form Styles */
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #314247; /* Deep Color on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(49, 66, 71, 0.5);
+}
+
+
+#addIssueBtn {
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding: 12px 20px;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+    .dashboard {
+        flex-direction: column;
+    }
+}
+
+#maintenance-section {
+  margin-top: 140px;
+}
+#landlord {
+  margin-top: 140px;
+}
+
+#issues-h1{
+  margin-top: 50px;
+}
