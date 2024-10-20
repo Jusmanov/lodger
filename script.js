@@ -9,13 +9,11 @@ const resolvedIssues = document.getElementById('resolvedIssues');
 const toggleLeaseButton = document.getElementById('toggleLease');
 const toggleExtractedTextButton = document.getElementById('toggleExtractedText');
 
-// Load stored issues and lease text
 function loadStoredData() {
     loadIssues();
     loadLease();
 }
 
-// Extract text from uploaded image
 function extractText() {
     const file = fileInput.files[0];
     if (!file) {
@@ -37,8 +35,8 @@ function extractText() {
             { logger: m => console.log(m) }
         ).then(({ data: { text } }) => {
             extractedTextDiv.innerHTML = `<pre>${text}</pre>`;
-            extractedTextDiv.style.display = "block"; // Show the extracted text
-            toggleExtractedTextButton.style.display = "block"; // Show the toggle button
+            extractedTextDiv.style.display = "block";
+            toggleExtractedTextButton.style.display = "block";
         }).catch(err => {
             console.error(err);
             alert('Error processing file: ' + err.message);
@@ -47,7 +45,6 @@ function extractText() {
     reader.readAsDataURL(file);
 }
 
-// Search for a term in the extracted text
 function searchLeaseText() {
     const searchTerm = prompt('Enter a term to search:');
     if (!searchTerm) return;
@@ -58,39 +55,34 @@ function searchLeaseText() {
     extractedTextDiv.innerHTML = `<pre>${highlightedText}</pre>`;
 }
 
-// Save the lease text to local storage
 function saveLease() {
     const text = extractedTextDiv.innerText;
     localStorage.setItem('leaseText', text);
     alert('Lease agreement saved!');
 }
 
-// Load the lease text from local storage
 function loadLease() {
     const text = localStorage.getItem('leaseText');
     if (text) {
         extractedTextDiv.innerHTML = `<pre>${text}</pre>`;
-        extractedTextDiv.style.display = "block"; // Ensure it displays
-        toggleExtractedTextButton.style.display = "block"; // Show the toggle button
+        extractedTextDiv.style.display = "block";
+        toggleExtractedTextButton.style.display = "block";
     } else {
         alert('No lease agreement saved.');
     }
 }
 
-// Toggle the display of the lease content
 toggleLeaseButton.addEventListener('click', () => {
     const leaseContent = document.getElementById('leaseContent');
     leaseContent.style.display = leaseContent.style.display === "none" ? "block" : "none";
     toggleLeaseButton.textContent = leaseContent.style.display === "block" ? "▲ Collapse Lease" : "▼ Expand Lease";
 });
 
-// Toggle the display of the extracted lease text
 toggleExtractedTextButton.addEventListener('click', () => {
     extractedTextDiv.style.display = extractedTextDiv.style.display === "none" ? "block" : "none";
     toggleExtractedTextButton.textContent = extractedTextDiv.style.display === "block" ? "▲ Hide Extracted Text" : "▼ Show Extracted Text";
 });
 
-// Add maintenance issue
 document.getElementById('addIssueBtn').addEventListener('click', () => {
     const email = landlordEmail.value;
     const issueText = issueInput.value;
@@ -112,10 +104,9 @@ document.getElementById('addIssueBtn').addEventListener('click', () => {
 
     addIssueToDOM(issue);
     saveIssueToLocalStorage(issue);
-    updateIssueCount(); // Update the count after adding a new issue
+    updateIssueCount();
 });
 
-// Display an issue in the DOM
 function addIssueToDOM(issue) {
     const issueCard = document.createElement('div');
     issueCard.className = 'issue-card';
@@ -137,20 +128,19 @@ function addIssueToDOM(issue) {
         const statusDiv = issueCard.querySelector('.issue-status');
         statusDiv.style.borderLeft = issue.resolved ? '5px solid green' : 'transparent';
         issueCard.querySelector('.resolveBtn').textContent = issue.resolved ? 'Unresolve' : 'Resolve';
-        saveIssuesToLocalStorage(); // Save all issues including updated resolved status
-        updateIssueCount(); // Update the count after resolving
+        saveIssuesToLocalStorage();
+        updateIssueCount();
     });
 
     issueCard.querySelector('.deleteBtn').addEventListener('click', () => {
         issueCard.remove();
         removeIssueFromLocalStorage(issue);
-        updateIssueCount(); // Update the count after deleting
+        updateIssueCount();
     });
 
     issuesDiv.appendChild(issueCard);
 }
 
-// Function to create mailto link
 function contactLandlord(issueText) {
     const email = landlordEmail.value;
     const subject = encodeURIComponent(`Maintenance Issue: ${issueText}`);
@@ -158,33 +148,29 @@ function contactLandlord(issueText) {
     window.location.href = mailtoLink;
 }
 
-// Save issue to local storage
 function saveIssueToLocalStorage(issue) {
     const issues = JSON.parse(localStorage.getItem('issues')) || [];
     issues.push(issue);
     localStorage.setItem('issues', JSON.stringify(issues));
 }
 
-// Load and display issues from local storage
 function loadIssues() {
     const issues = JSON.parse(localStorage.getItem('issues')) || [];
     issues.forEach(issue => {
         addIssueToDOM({
             ...issue,
-            resolved: issue.resolved // Ensure the resolved status is set correctly
+            resolved: issue.resolved
         });
     });
-    updateIssueCount(); // Update count after loading issues
+    updateIssueCount();
 }
 
-// Remove issue from local storage
 function removeIssueFromLocalStorage(issue) {
     let issues = JSON.parse(localStorage.getItem('issues')) || [];
     issues = issues.filter(i => i.issueText !== issue.issueText);
     localStorage.setItem('issues', JSON.stringify(issues));
 }
 
-// Save all issues to local storage
 function saveIssuesToLocalStorage() {
     const issues = Array.from(issuesDiv.children).map(issueCard => {
         const issueText = issueCard.querySelector('h4').innerText;
@@ -196,7 +182,6 @@ function saveIssuesToLocalStorage() {
     localStorage.setItem('issues', JSON.stringify(issues));
 }
 
-// Update issue count display
 function updateIssueCount() {
     const issues = JSON.parse(localStorage.getItem('issues')) || [];
     totalIssues.textContent = issues.length;
@@ -204,5 +189,4 @@ function updateIssueCount() {
     resolvedIssues.textContent = resolvedCount;
 }
 
-// Initialize app
 document.addEventListener('DOMContentLoaded', loadStoredData);
