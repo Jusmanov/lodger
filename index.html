@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Alegreya&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>Lodger Dashboard</h1>
+        </header>
+        <div class="dashboard">
+            <aside class="sidebar">
+                <nav>
+                    <ul>
+                        <li><a href="#lease-section">Lease Uploader</a></li>
+                        <li><a href="#landlord">Landlord Info</a></li>
+                        <li><a href="#maintenance-section">Maintenance Tracker</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="content-area">
+                <section class="card stats-card">
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>Total Issues</h3>
+                            <p id="totalIssues">0</p>
+                        </div>
+                        <div class="stat">
+                            <h3>Resolved Issues</h3>
+                            <p id="resolvedIssues">0</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="lease-section" class="card lease-card">
+                    <h2>Lease Agreement Uploader</h2>
+                    <button type="button" id="toggleLease">▼ Expand</button>
+                    <div id="leaseContent" style="display:none;">
+                        <form id="leaseForm">
+                            <div class="form-group">
+                                <label for="fileInput">Upload Lease Agreement:</label>
+                                <input type="file" id="fileInput" accept="image/*">
+                            </div>
+                            <button type="button" onclick="extractText()">Extract Text</button>
+                            <button type="button" onclick="searchLeaseText()">Search Text</button>
+                            <button type="button" onclick="saveLease()">Save Lease</button>
+                        </form>
+                        <div id="extractedTextContainer" class="lease-text-container">
+                            <button type="button" id="toggleExtractedText">▼ Show Extracted Text</button>
+                            <div id="extractedText" class="lease-text" style="display:none;"></div>
+                        </div>
+                        <div id="leaseMessage" aria-live="assertive"></div>
+                    </div>
+                </section>
+
+                <section id="landlord" class="card">
+                    <h2>Landlord Information</h2>
+                    <form id="landlordForm">
+                        <div class="form-group">
+                            <label for="landlordName">Name:</label>
+                            <input type="text" id="landlordName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="landlordEmail">Email:</label>
+                            <input type="email" id="landlordEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="landlordPhone">Phone:</label>
+                            <input type="tel" id="landlordPhone">
+                        </div>
+                        <button type="button" id="saveLandlordInfo">Save Info</button>
+                    </form>
+                    <div id="landlordMessage" aria-live="assertive"></div>
+                </section>
+
+                <section id="maintenance-section" class="card">
+                    <h2>Maintenance Tracker</h2>
+                    <form id="maintenanceForm">
+                        <div class="form-group">
+                            <label for="urgency">Urgency:</label>
+                            <select id="urgency" required>
+                                <option value="">Select urgency</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="issue">Maintenance Issue:</label>
+                            <textarea id="issue" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="reportDate">Date Reported:</label>
+                            <input type="date" id="reportDate" required>
+                        </div>
+                        <button type="button" id="addIssueBtn">Add Issue</button>
+                    </form>
+                    <h1 id = "issues-h1">
+                      Issues
+                    </h1>
+                    <div id="issues" aria-live="polite"></div>
+                    <div id="maintenanceMessage" aria-live="assertive"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.0.2/tesseract.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
