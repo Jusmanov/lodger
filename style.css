@@ -1,34 +1,29 @@
-/* Base styles */
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    color: #314247; /* Deep Color text */
-    background: #F6F6F6; /* Light background */
+    color: #314247;
+    background: #F6F6F6;
     background-size: cover;
     transition: background-color 0.6s, color 0.3s;
 }
 
-/* Container */
 .app-container {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
-/* Header */
 .header {
     background: #314247;
-    color: #314247; /* Deep Color text */
+    color: #314247;
     padding: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    
 }
 
-/* Header Title */
 .header h1 {
     margin: 0;
     font-family: 'Alegreya', serif;
@@ -39,37 +34,34 @@ body {
     width: 100%;
 }
 
-/* Button Styles */
 button {
     padding: 10px 15px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #D55F8F; /* Primary Color */
-    color: #FFFFFF; /* White text */
+    background-color: #D55F8F;
+    color: #FFFFFF;
     font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #B48A8E; /* Darker primary color on hover */
+    background-color: #B48A8E;
     transform: translateY(-2px);
 }
 
-/* Dashboard */
 .dashboard {
     display: flex;
     flex: 1;
     overflow: hidden;
     padding: 20px;
-    gap: 20px; /* Space between sidebar and content */
+    gap: 20px;
 }
 
-/* Sidebar */
 .sidebar {
     width: 300px;
-    background: rgba(247, 247, 247, 0.8); /* Glassmorphism sidebar */
+    background: rgba(247, 247, 247, 0.8);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.7px);
@@ -78,7 +70,6 @@ button:hover {
     padding: 20px;
 }
 
-/* Sidebar Links */
 .sidebar nav ul {
     list-style: none;
     padding: 0;
@@ -89,21 +80,20 @@ button:hover {
 }
 
 .sidebar nav ul li a {
-    color: #314247; /* Deep Color links */
+    color: #314247;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .sidebar nav ul li a:hover {
-    color: #647973; /* Accent Color on hover */
+    color: #647973;
 }
 
-/* Content Area */
 .content-area {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
-    background: rgba(247, 247, 247, 0.8); /* Glassmorphism content area */
+    background: rgba(247, 247, 247, 0.8);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.7px);
@@ -111,73 +101,64 @@ button:hover {
     border: 2px solid #647973;
 }
 
-/* Lease Card */
 .lease-card {
-    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 16px;
-    border: 2px solid #647973; /* Custom border color */
+    border: 2px solid #647973;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 80px;
 }
 
 .lease-text-container {
     margin-top: 15px;
-    
 }
 
 #saveLandlordInfo {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 #extractedText {
-    max-height: 400px; /* Set a maximum height for the container */
-    overflow-y: hidden; /* Disable vertical scrolling */
-    overflow-x: auto;   /* Enable horizontal scrolling */
-    white-space: pre;   /* Preserve whitespace without wrapping lines */
-    word-wrap: normal;  /* Prevent breaking words */
-    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
-    padding: 10px;      /* Optional: Add some padding */
+    max-height: 400px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: pre;
+    word-wrap: normal;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 
-
-/* Expand/Collapse Button */
 #toggleLease, #toggleExtractedText {
     margin-bottom: 10px;
 }
 
-
-
-/* Issue Card */
 .issue-card {
-    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex; /* Flexbox for layout */
+    display: flex;
     border: 2px solid #647973;
 }
 
 .issue-status {
-    width: 5px; /* Fixed width for status marker */
-    transition: border-left 0.3s; /* Smooth transition */
+    width: 5px;
+    transition: border-left 0.3s;
 }
 
 .issue-content {
-    flex: 1; /* Take the remaining space */
-    padding-left: 10px; /* Space between marker and content */
+    flex: 1;
+    padding-left: 10px;
 }
 
-/* Card Title */
 .issue-card h4 {
     margin: 0 0 10px 0;
     font-family: 'Alegreya', serif;
-    color: #314247; /* Deep Color title */
+    color: #314247;
 }
 
-/* Utility Classes */
 .message {
     margin-top: 10px;
     padding: 10px;
@@ -186,16 +167,15 @@ button:hover {
 }
 
 .message.success {
-    background-color: #E0F7E4; /* Light green */
-    color: #155724; /* Dark green text */
+    background-color: #E0F7E4;
+    color: #155724;
 }
 
 .message.error {
-    background-color: #FEE2E2; /* Light red */
-    color: #721c24; /* Dark red text */
+    background-color: #FEE2E2;
+    color: #721c24;
 }
 
-/* Form Styles */
 input, select, textarea {
     width: 100%;
     padding: 12px;
@@ -206,18 +186,17 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-    border-color: #314247; /* Deep Color on focus */
+    border-color: #314247;
     outline: none;
     box-shadow: 0 0 5px rgba(49, 66, 71, 0.5);
 }
 
-
 #addIssueBtn {
-  margin-bottom: 30px;
-  margin-top: 10px;
-  padding: 12px 20px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    padding: 12px 20px;
 }
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
@@ -228,12 +207,12 @@ input:focus, select:focus, textarea:focus {
 }
 
 #maintenance-section {
-  margin-top: 140px;
+    margin-top: 140px;
 }
 #landlord {
-  margin-top: 140px;
+    margin-top: 140px;
 }
 
-#issues-h1{
-  margin-top: 50px;
+#issues-h1 {
+    margin-top: 50px;
 }
